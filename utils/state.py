@@ -21,8 +21,8 @@ class State(TypedDict):
         list[
             Literal[
                 "assistant",
-                "greeting_agent",
-                "retrieval_agent"
+                "flight_booking_agent",
+                "book_excursion_agent"
             ]
         ],
         update_dialog_stack,

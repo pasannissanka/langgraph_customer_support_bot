@@ -4,6 +4,7 @@ import time
 
 from data.configs import Configs
 from data.vector_store import VectorStore
+from data.db import DB
 
 
 # Streamed response emulator
@@ -20,16 +21,20 @@ def response_generator():
         time.sleep(0.05)
 
 
-configs = Configs()
-vector_store = VectorStore()
-
-
 def app():
+    configs = Configs()
+    db = DB()
+    vector_store = None
+
+    if configs.OPEN_AI_API_KEY is not None:
+        vector_store = VectorStore()
+
     with st.sidebar:
         if configs.OPEN_AI_API_KEY is None:
             OPEN_AI_KEY = st.text_input("OpenAI API Key", key="keys_open_ai_key", type="password")
             "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
             configs.set_open_ai_key(openai_api_key=OPEN_AI_KEY)
+            vector_store = VectorStore()
         if configs.LANGCHAIN_API_KEY is None:
             LANGCHAIN_API_KEY = st.text_input("Langchain API Key", key="keys_langchain_api_key_", type="password")
             "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"

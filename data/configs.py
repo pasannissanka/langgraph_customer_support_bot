@@ -2,17 +2,13 @@ import os
 
 from dotenv import load_dotenv
 
+from utils.decorators import singleton
+
 load_dotenv()
 
 
+@singleton
 class Configs:
-    instance = None
-
-    def __new__(cls):
-        if not hasattr(cls, 'instance'):
-            cls.instance = super(Configs, cls).__new__(cls)
-        return cls.instance
-
     def __init__(self):
         self.OPEN_AI_API_KEY = os.getenv('OPEN_AI_API_KEY')
         self.LANGCHAIN_API_KEY = os.getenv('LANGCHAIN_API_KEY')

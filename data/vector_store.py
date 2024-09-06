@@ -3,6 +3,7 @@ import requests
 import openai
 import re
 from data.configs import Configs
+from utils.decorators import singleton
 
 
 class VectorStoreRetriever:
@@ -32,14 +33,8 @@ class VectorStoreRetriever:
         ]
 
 
+@singleton
 class VectorStore(object):
-    instance = None
-
-    def __new__(cls):
-        if not hasattr(cls, 'instance'):
-            cls.instance = super(VectorStore, cls).__new__(cls)
-        return cls.instance
-    
     def __init__(self):
         response = requests.get(
             "https://storage.googleapis.com/benchmarks-artifacts/travel-db/swiss_faq.md"

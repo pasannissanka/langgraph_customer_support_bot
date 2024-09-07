@@ -47,7 +47,7 @@ builder.add_node(
 def route_update_flight(
         state: State,
 ) -> Literal[
-    "update_flight_sensitive_tools",
+    # "update_flight_sensitive_tools",
     "update_flight_safe_tools",
     "leave_skill",
     "__end__",
@@ -62,7 +62,7 @@ def route_update_flight(
     safe_toolnames = [t.name for t in update_flight_safe_tools]
     if all(tc["name"] in safe_toolnames for tc in tool_calls):
         return "update_flight_safe_tools"
-    return "update_flight_sensitive_tools"
+    return "update_flight_safe_tools"  # "update_flight_sensitive_tools"
 
 
 # builder.add_edge("update_flight_sensitive_tools", "update_flight")
@@ -117,7 +117,7 @@ def route_book_excursion(
         state: State,
 ) -> Literal[
     "book_excursion_safe_tools",
-    "book_excursion_sensitive_tools",
+    # "book_excursion_sensitive_tools",
     "leave_skill",
     "__end__",
 ]:
@@ -131,7 +131,7 @@ def route_book_excursion(
     tool_names = [t.name for t in book_excursion_safe_tools]
     if all(tc["name"] in tool_names for tc in tool_calls):
         return "book_excursion_safe_tools"
-    return "book_excursion_sensitive_tools"
+    return "book_excursion_safe_tools"  # "book_excursion_sensitive_tools"
 
 
 # builder.add_edge("book_excursion_sensitive_tools", "book_excursion")
@@ -150,7 +150,7 @@ def route_primary_assistant(
 ) -> Literal[
     "primary_assistant_tools",
     "enter_update_flight",
-    "enter_book_hotel",
+    # "enter_book_hotel",
     "enter_book_excursion",
     "__end__",
 ]:
@@ -195,8 +195,8 @@ def route_to_workflow(
 ) -> Literal[
     "primary_assistant",
     "update_flight",
-    "book_car_rental",
-    "book_hotel",
+    # "book_car_rental",
+    # "book_hotel",
     "book_excursion",
 ]:
     """If we are in a delegated state, route directly to the appropriate assistant."""

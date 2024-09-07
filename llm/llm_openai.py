@@ -5,7 +5,7 @@ from data.configs import Configs
 configs = Configs()
 
 llm = ChatOpenAI(
-    model="gpt-4o",
-    temperature=0,
+    model="gpt-4o-mini",
+    temperature=1,
     api_key=configs.OPEN_AI_API_KEY
 )

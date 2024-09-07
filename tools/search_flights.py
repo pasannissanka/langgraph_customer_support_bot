@@ -14,8 +14,8 @@ def search_flights(
     end_time: Optional[date] = None,
     limit: int = 20,
 ) -> list[dict]:
-    db = DB()
     """Search for flights based on departure airport, arrival airport, and departure time range."""
+    db = DB()
     conn = sqlite3.connect(db.db)
     cursor = conn.cursor()
 

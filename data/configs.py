@@ -10,7 +10,7 @@ load_dotenv()
 @singleton
 class Configs:
     def __init__(self):
-        self.OPEN_AI_API_KEY = os.getenv('OPEN_AI_API_KEY')
+        self.OPEN_AI_API_KEY = os.getenv('OPENAI_API_KEY')
         self.LANGCHAIN_API_KEY = os.getenv('LANGCHAIN_API_KEY')
 
     def set_open_ai_key(self, openai_api_key):

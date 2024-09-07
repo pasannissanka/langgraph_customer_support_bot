@@ -4,7 +4,7 @@ import streamlit as st
 import random
 import time
 
-from langchain_core.messages import ToolMessage
+from langchain_core.messages import ToolMessage, AIMessage
 
 from data.configs import Configs
 from data.vector_store import VectorStore
@@ -84,10 +84,11 @@ def app():
                     msg_repr = message.pretty_repr(html=True)
                     _printed.add(message.id)
 
-                    # Add assistant response to chat history
-                    st.session_state.messages.append({"role": "assistant", "content": msg_repr})
-                    with st.chat_message("assistant"):
-                        st.markdown(msg_repr)
+                    if isinstance(message, AIMessage) and message.response_metadata.get('finish_reason') == 'stop':
+                        # Add assistant response to chat history
+                        st.session_state.messages.append({"role": "assistant", "content": msg_repr})
+                        with st.chat_message("assistant"):
+                            st.markdown(msg_repr)
 
         snapshot = graph.get_state(config)
         while snapshot.next:

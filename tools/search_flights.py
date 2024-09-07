@@ -1,5 +1,5 @@
 import sqlite3
-from datetime import date
+from datetime import date, datetime
 from typing import Optional
 from data.db import DB
 
@@ -10,8 +10,8 @@ from langchain_core.tools import tool
 def search_flights(
     departure_airport: Optional[str] = None,
     arrival_airport: Optional[str] = None,
-    start_time: Optional[date] = None,
-    end_time: Optional[date] = None,
+    start_time: Optional[date | datetime] = None,
+    end_time: Optional[date | datetime] = None,
     limit: int = 20,
 ) -> list[dict]:
     """Search for flights based on departure airport, arrival airport, and departure time range."""

@@ -1,7 +1,7 @@
 from datetime import datetime
 from langchain_core.prompts import ChatPromptTemplate
 from llm.llm_openai import llm
-from utils.complete_or_escalate import CompleteOrEscalate
+from tools.complete_or_escalate import CompleteOrEscalate
 from tools.search_flights import search_flights
 
 # Define the Greeting Agent

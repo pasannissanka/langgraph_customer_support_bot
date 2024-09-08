@@ -12,7 +12,7 @@ from agents.primary_agent.agent import assistant_runnable, primary_assistant_too
     ToBookExcursion
 from tools.fetch_user_flight_information import fetch_user_flight_information
 from utils.assistant import Assistant
-from utils.complete_or_escalate import CompleteOrEscalate
+from tools.complete_or_escalate import CompleteOrEscalate
 from utils.entry_node import create_entry_node
 from utils.helpers import create_tool_node_with_fallback
 from utils.state import State

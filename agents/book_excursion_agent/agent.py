@@ -1,7 +1,7 @@
 from datetime import datetime
 from langchain_core.prompts import ChatPromptTemplate
 from llm.llm_openai import llm
-from utils.complete_or_escalate import CompleteOrEscalate
+from tools.complete_or_escalate import CompleteOrEscalate
 from tools.search_trip_recommendations import search_trip_recommendations
 
 book_excursion_prompt = ChatPromptTemplate.from_messages(

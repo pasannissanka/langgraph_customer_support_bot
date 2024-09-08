@@ -28,7 +28,7 @@ Inspired by langchain's [customer support bot](https://github.com/langchain-ai/l
     ```
 4. Run the app:
    ```bash
-   streamlit run app.py
+   streamlit run main.py
    ```
 5. Open the URL displayed in the terminal in your browser.
 
